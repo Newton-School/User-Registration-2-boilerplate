@@ -8,28 +8,27 @@ var users   =require("../models/user.js");
 //Router Middlewares
 app.use(express.json());
 
-app.post("/user_register",async function(req,res){
+/*
+Post request json file structure
 
-    var name = req.body.name;
-    var email  = req.body.email;
-    var password = req.body.password;
-    var DOB = req.body.DOB;
 
-    var newuser = {
+    obj =  {
         "name":name,
         "email":email,
         "password": password,
-        "DOB": DOB,
-    };
+        "DOB": DOB
+    }
 
-    // console.log(newuser);
+ */
 
-    users.create(newuser).then((user) => {
-        res.send(user._id);
-    })
-    .catch((error) => {
-        res.status(404).send(error.message);
-    });
+//You need to complete the route of user register
+//you need to register the user and return the id assign to the user.
+//you will get error if user mail allready exist in that case you need to return 404 status with err message that you get.
+//to look the user schema look ../models/user.js
+
+app.post("/user_register",async function(req,res){
+
+    //Write your Code here
 
 });
 
