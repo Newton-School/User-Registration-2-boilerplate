@@ -1,0 +1,176 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-07T06:29:12.722Z",
+    "end": "2023-03-07T06:29:12.783Z",
+    "duration": 61,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "db84de6e-0565-43df-8afb-925845afc9d9",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "86370b59-a842-4a2b-ae4b-f26d8b9e746c",
+          "title": "Checking Aggregation Pipelines",
+          "fullFile": "/Users/swarajjain/Desktop/Project/User Registration 2/User Registration 2/__tests__/test.js",
+          "file": "/__tests__/test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Checking Aggregation Pipelines\"",
+              "fullTitle": "Checking Aggregation Pipelines \"before all\" hook in \"Checking Aggregation Pipelines\"",
+              "timedOut": false,
+              "duration": 37,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await mongoose.connect(process.env.DATABASE_URL || \"mongodb://localhost:27017/users\", { useNewUrlParser: true, useUnifiedTopology: true });\nconsole.log('connected to DB');\nawait seedWithDummyData();",
+              "err": {},
+              "uuid": "29ada042-27c0-4679-9b21-16bb083c7a40",
+              "parentUUID": "86370b59-a842-4a2b-ae4b-f26d8b9e746c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Checking Aggregation Pipelines\"",
+              "fullTitle": "Checking Aggregation Pipelines \"after all\" hook in \"Checking Aggregation Pipelines\"",
+              "timedOut": false,
+              "duration": 2,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await mongoose.disconnect();\nconsole.log('disconnected DB')",
+              "err": {},
+              "uuid": "b4d162cd-0541-4f26-8382-14df285cf3e1",
+              "parentUUID": "86370b59-a842-4a2b-ae4b-f26d8b9e746c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "dbb33e8d-41e3-44cf-969d-1e02507a236a",
+              "title": "Validating the Testcases",
+              "fullFile": "/Users/swarajjain/Desktop/Project/User Registration 2/User Registration 2/__tests__/test.js",
+              "file": "/__tests__/test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Running the Valid email",
+                  "fullTitle": "Checking Aggregation Pipelines Validating the Testcases Running the Valid email",
+                  "timedOut": false,
+                  "duration": 17,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cur = Math.floor(Math.random() * 100000000);\n            const obj1 = {\n                'name': cur,\n                'email':cur+'@gmail.com',\n                'password':cur+'@123',\n                'DOB': '30/09/2002'\n            }\n            var url = '/user_register';\n            const res = await chai.request(app).post(url).send(obj1);\n            expect(res).to.have.status(200);\n            var str = res.text;\n            var id=\"\";\n            for(var i=1;i<str.length-1;i++) id+=str[i]; \n            // console.log(id);\n            obj = await users.findById(id);\n            expect(obj.name).to.be.an('string');\n            expect(obj.email).to.be.a('string');\n            expect(obj.password).to.be.a('string');\n            expect(String(obj.email)).to.equal(String(cur)+'@gmail.com');",
+                  "err": {},
+                  "uuid": "70be4bde-39a2-47fc-99e7-10bf0124187a",
+                  "parentUUID": "dbb33e8d-41e3-44cf-969d-1e02507a236a",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Running Allready exist email",
+                  "fullTitle": "Checking Aggregation Pipelines Validating the Testcases Running Allready exist email",
+                  "timedOut": false,
+                  "duration": 3,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const obj = {\n                'name': cur,\n                'email':cur+'@gmail.com',\n                'password':cur+'@123',\n                'DOB': '30/09/2003'\n            }\n            var url = '/user_register';\n            const res = await chai.request(app).post(url).send(obj);\n            expect(res).to.have.status(404);\n            expect(res.text).to.equal('User validation failed: email: Email already exists');",
+                  "err": {},
+                  "uuid": "654a37e5-a34f-451e-88e4-53f4854e394d",
+                  "parentUUID": "dbb33e8d-41e3-44cf-969d-1e02507a236a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "70be4bde-39a2-47fc-99e7-10bf0124187a",
+                "654a37e5-a34f-451e-88e4-53f4854e394d"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 20,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.2.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}
